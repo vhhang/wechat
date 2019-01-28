@@ -1,0 +1,19 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wechat
+    username: root
+    password: zhanghang
+mybatis:
+  type-aliases-package: com.zhang.wechat.Entity
+  mapper-locations: classpath:mapping/*Mapping.xml
+
+logging:
+  level:
+     com.zhang.wechat.Mapper : debug
+pagehelper:
+  auto-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql

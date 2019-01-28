@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zhang.wechat.Mapper.SourceMapper">
+<resultMap id="BaseSource" type="com.zhang.wechat.Entity.Source">
+    <id column="source_id" property="sourceId" jdbcType="INTEGER"></id>
+    <result column="source_name" property="sourceName" jdbcType="VARCHAR"></result>
+    <result column="source_url" property="sourceUrl" jdbcType="VARCHAR"></result>
+    <result column="source_pwd" property="sourcePwd" jdbcType="VARCHAR"></result>
+    <result column="source_type" property="sourceType" jdbcType="INTEGER"></result>
+</resultMap>
+    <select id="querySourceByReqContent" parameterType="string" resultMap="BaseSource">
+           select * from source where source_name like concat('%',#{reqContent},'%')
+    </select>
+    <select id="findAllSource" resultMap="BaseSource">
+        select * from  source
+    </select>
+    
+    <insert id="add" parameterType="com.zhang.wechat.Entity.Source">
+        insert into source (source_id,source_name,source_url,source_pwd,source_type)
+        values (#{souerceId},#{sourceName},#{sourceUrl},#{sourcePwd},#{sourceType})
+    </insert>
+    
+    <insert id="addSource" parameterType="list" useGeneratedKeys="true" >
+        insert into source (source_name,source_url,source_pwd,source_type)
+        values
+        <foreach collection="list" item="source" index="index" separator=",">
+            (
+            #{source.sourceName},
+            #{source.sourceUrl},
+            #{source.sourcePwd},
+            #{source.sourceType}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
