@@ -1,3 +1,3 @@
-*.js linguist-language=Java,SpringBoot,微信公众号,Mybatis
-*.css linguist-language=Java,SpringBoot,微信公众号,Mybatis
-*.html linguist-language=Java,SpringBoot,微信公众号,Mybatis
+*.js linguist-language=微信公众号
+*.css linguist-language=SpringBoot
+*.html linguist-language=Mybatis
